@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://flagger.app
     chart: flagger
-    targetRevision: 1.0.0
+    targetRevision: 1.42.0
     helm:
       parameters:
       - name: meshProvider
