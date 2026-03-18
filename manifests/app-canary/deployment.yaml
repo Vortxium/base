@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo
+  namespace: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: podinfo
+  template:
+    metadata:
+      labels:
+        app: podinfo
+    spec:
+      containers:
+      - name: podinfod
+        image: stefanprodan/podinfo:6.0.0 # 先用 6.0.0 版本
+        ports:
+        - containerPort: 9898

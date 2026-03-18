@@ -1,0 +1,25 @@
+# 建议直接引用官方远程全量配置，省去维护零散 YAML 的烦恼
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: flagger-controller
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://flagger.app
+    chart: flagger
+    targetRevision: 1.0.0
+    helm:
+      parameters:
+      - name: meshProvider
+        value: traefik
+      - name: metricsServer
+        value: http://prometheus-server.monitoring.svc.cluster.local:80
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system # 习惯上放在 kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
