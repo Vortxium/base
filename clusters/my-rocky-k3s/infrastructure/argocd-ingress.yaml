@@ -1,6 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  annotations:
+    # 显式告知 Traefik 后端是 HTTP
+    traefik.ingress.kubernetes.io/service.serversscheme: http
   name: argocd-server-ingress
   namespace: argocd
 spec:
