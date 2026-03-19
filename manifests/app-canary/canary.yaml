@@ -16,7 +16,3 @@ spec:
     threshold: 5     # 失败容忍上限
     stepWeight: 10   # 每次增加 10% 流量
     maxWeight: 50    # 最高到 50%
-    metrics:
-    - name: request-success-rate
-      threshold: 99
-      interval: 1m
